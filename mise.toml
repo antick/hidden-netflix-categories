@@ -1,0 +1,58 @@
+# Toolchain and task runner for netflix-categories-chrome. `mise install` once, then `mise run <task>`.
+# Tasks delegate to the root package.json scripts so both entry points stay identical.
+
+[tools]
+bun = "1.4.2"
+node = "24"
+
+[tasks.install]
+description = "Install workspace dependencies from the lockfile"
+run = "bun install --frozen-lockfile"
+
+[tasks.dev]
+description = "WXT development browser for the Chrome extension"
+run = "bun run dev"
+
+[tasks."dev:landing"]
+description = "Astro dev server for the landing site"
+run = "bun run dev:landing"
+
+[tasks.build]
+description = "Build all workspace packages"
+run = "bun run build"
+
+[tasks."build:extension"]
+description = "Production build of the Chrome extension"
+run = "bun run build:extension"
+
+[tasks."build:landing"]
+description = "Production build of the landing site"
+run = "bun run build:landing"
+
+[tasks.test]
+description = "Run extension unit tests and landing build checks"
+run = "bun run test"
+
+[tasks.typecheck]
+description = "Typecheck all apps via Turborepo"
+run = "bun run typecheck"
+
+[tasks.format]
+description = "Format the repo with Biome"
+run = "bun run format"
+
+[tasks.check]
+description = "Biome lint and format check across the repo"
+run = "bun run check"
+
+[tasks."validate:data"]
+description = "Validate the shared category dataset"
+run = "bun run validate:data"
+
+[tasks."validate:release"]
+description = "Store package permission and notice checks"
+run = "bun run validate:release"
+
+[tasks.preview]
+description = "Preview the production landing build"
+run = "bun run --filter @netflix-categories/landing preview"
