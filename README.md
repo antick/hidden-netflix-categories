@@ -52,6 +52,26 @@ docs/               # store submission, data provenance, and release notes
 
 Use Bun **1.4.2**, pinned in `package.json`. WXT and Astro also require Node.js 22 or newer.
 
+### mise
+
+With [mise](https://mise.jdx.dev/) installed, run `mise install` once, then use the tasks in `mise.toml` (same commands as the scripts below):
+
+| Task | Command |
+| --- | --- |
+| `install` | `mise run install` |
+| `dev` | `mise run dev` |
+| `dev:landing` | `mise run dev:landing` |
+| `build` | `mise run build` |
+| `build:extension` | `mise run build:extension` |
+| `build:landing` | `mise run build:landing` |
+| `test` | `mise run test` |
+| `typecheck` | `mise run typecheck` |
+| `format` | `mise run format` |
+| `check` | `mise run check` |
+| `validate:data` | `mise run validate:data` |
+| `validate:release` | `mise run validate:release` |
+| `preview` | `mise run preview` |
+
 ```bash
 git clone https://github.com/antick/netflix-categories-chrome.git
 cd netflix-categories-chrome
