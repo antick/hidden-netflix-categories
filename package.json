@@ -1,12 +1,12 @@
 {
   "name": "netflix-categories",
   "private": true,
-  "type": "module",
-  "packageManager": "bun@1.4.2",
+  "license": "GPL-3.0-only",
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
+  "type": "module",
   "scripts": {
     "dev": "bun run --filter netflix-categories-chrome dev",
     "dev:landing": "bun run --filter @netflix-categories/landing dev",
@@ -16,15 +16,20 @@
     "zip": "bun run --filter netflix-categories-chrome zip",
     "typecheck": "turbo run typecheck",
     "test": "turbo run test",
-    "check": "biome check .",
-    "check:fix": "biome check --write .",
-    "format": "biome format --write .",
+    "lint": "oxlint --deny-warnings",
+    "lint:fix": "oxlint --fix",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "check": "bun run lint && bun run format:check",
+    "check:fix": "bun run lint:fix && bun run format",
     "validate:data": "bun run --filter @netflix-categories/data validate",
     "validate:release": "bun run --filter netflix-categories-chrome validate:release"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.14",
+    "@astrojs/compiler-rs": "0.5.2",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
     "turbo": "2.11.3"
   },
-  "license": "GPL-3.0-only"
+  "packageManager": "bun@1.4.2"
 }

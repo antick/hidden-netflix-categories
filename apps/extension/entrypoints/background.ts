@@ -5,19 +5,19 @@ import {
   unregisterNetflixContentScript,
 } from "../lib/permissions";
 
-export default defineBackground(() => {
-  const syncRegistration = async () => {
-    const allowed = await browser.permissions.contains({
-      permissions: ["scripting"],
-      origins: [NETFLIX_HOST_PERMISSION],
-    });
-    if (allowed) {
-      await registerNetflixContentScript();
-    } else {
-      await unregisterNetflixContentScript();
-    }
-  };
+async function syncRegistration() {
+  const allowed = await browser.permissions.contains({
+    permissions: ["scripting"],
+    origins: [NETFLIX_HOST_PERMISSION],
+  });
+  if (allowed) {
+    await registerNetflixContentScript();
+  } else {
+    await unregisterNetflixContentScript();
+  }
+}
 
+export default defineBackground(() => {
   void syncRegistration();
   browser.runtime.onInstalled.addListener(() => {
     void syncRegistration();

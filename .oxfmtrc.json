@@ -1,0 +1,19 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "singleQuote": false,
+  "semi": true,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "astro": true,
+  "ignorePatterns": [
+    "**/.wxt/**",
+    "**/.output/**",
+    "**/.astro/**",
+    "**/.turbo/**",
+    "**/.vercel/**",
+    "**/dist/**",
+    "**/node_modules/**",
+    "**/netflix-categories.json"
+  ]
+}

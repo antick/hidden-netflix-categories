@@ -51,7 +51,7 @@ describe("category dataset", () => {
     const tree = getVisibleTree([], [parent!.id]);
     expect(tree.some((item) => item.id === parent!.id)).toBe(false);
     const visibleIds = tree.flatMap(function collect(item): string[] {
-      return [item.id, ...(item.children?.flatMap(collect) ?? [])];
+      return [item.id].concat(item.children?.flatMap(collect) ?? []);
     });
     expect(visibleIds).toContain(child.id);
   });

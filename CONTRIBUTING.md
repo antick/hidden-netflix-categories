@@ -10,7 +10,7 @@ Thanks for helping improve Netflix Categories. This is an unofficial project and
 
 The extension is in `apps/extension`, the website in `apps/landing`, and the shared dataset in `packages/categories`. Website changes don't need an extension version bump, but they only reach production with the next tagged release.
 
-Use Biome (`bun run check`) instead of ESLint/Prettier.
+Use oxlint and oxfmt (`bun run check`) instead of ESLint/Prettier.
 
 ## Category data
 

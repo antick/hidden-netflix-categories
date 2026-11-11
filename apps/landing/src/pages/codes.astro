@@ -20,6 +20,7 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
   timeZone: "UTC",
 });
 ---
+
 <Base
   title={`All ${total} Netflix genre codes · Categories for Netflix`}
   description={`Every hidden Netflix category and its secret genre code, in ${groups.length} groups. Search ${total} codes and open any of them on Netflix in one click.`}
@@ -27,7 +28,9 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
 >
   <section class="glow border-b border-border/60">
     <div class="mx-auto max-w-6xl px-5 pt-14 pb-10">
-      <p class="font-mono text-xs font-bold tracking-[0.12em] text-primary">THE FULL GUIDE</p>
+      <p class="font-mono text-xs font-bold tracking-[0.12em] text-primary">
+        THE FULL GUIDE
+      </p>
       <h1 class="mt-3 text-4xl font-extrabold tracking-tight text-balance sm:text-5xl">
         All {total} Netflix genre codes
       </h1>
@@ -35,10 +38,18 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
         Select a name to open it on Netflix, or a code to copy it. Availability
         varies by country, so some genres may be empty where you are. Catalog
         updated {updated}.{" "}
-        <a href={site.install} class="text-primary underline-offset-4 hover:underline">Get them in your toolbar</a>.
+        <a
+          href={site.install}
+          class="text-primary underline-offset-4 hover:underline"
+        >
+          Get them in your toolbar
+        </a>
+        .
       </p>
       <div class="mt-8 max-w-xl">
-        <label for="code-filter" class="sr-only">Filter genres by name or code</label>
+        <label for="code-filter" class="sr-only">
+          Filter genres by name or code
+        </label>
         <Input
           id="code-filter"
           type="search"
@@ -46,68 +57,73 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
           spellCheck={false}
           placeholder={`Filter ${total} genres by name or code`}
         />
-        <p id="copy-hint" hidden>Copies the genre code</p>
-        <p id="filter-status" class="mt-2 text-sm text-muted-foreground" aria-live="polite">
+        <p id="copy-hint" hidden>
+          Copies the genre code
+        </p>
+        <p
+          id="filter-status"
+          class="mt-2 text-sm text-muted-foreground"
+          aria-live="polite"
+        >
           Showing all {total} genres.
         </p>
       </div>
       <nav aria-label="Genre groups" class="mt-6">
         <ul class="flex flex-wrap gap-2">
-          {
-            groups.map((group) => (
-              <li data-jump={group.id}>
-                <a
-                  href={`#${group.id}`}
-                  class="inline-block rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
-                >
-                  {group.name}
-                </a>
-              </li>
-            ))
-          }
+          {groups.map((group) => (
+            <li data-jump={group.id}>
+              <a
+                href={`#${group.id}`}
+                class="inline-block rounded-full border border-border px-3 py-1 text-xs text-muted-foreground transition-colors hover:border-primary hover:text-foreground"
+              >
+                {group.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </nav>
     </div>
   </section>
 
   <div class="mx-auto max-w-6xl columns-1 gap-8 px-5 py-12 lg:columns-2">
-    {
-      groups.map((group) => (
-        <section
-          id={group.id}
-          data-group
-          class="mb-8 break-inside-avoid-column"
-        >
-          <header class="mb-2 flex items-baseline justify-between gap-3 border-b border-border pb-2">
-            <h2 class="text-xl font-extrabold tracking-tight">
-              <a
-                href={netflixUrl(group.code)}
-                target="_blank"
-                rel="noopener noreferrer nofollow"
-                class="hover:text-accent"
-              >
-                {group.name}
-              </a>
-            </h2>
-            <span class="shrink-0 font-mono text-xs text-muted-foreground">
-              <button type="button" data-copy={group.code} aria-describedby="copy-hint">
-                {group.code}
-              </button>
-              · {formatCount(countInGroup(group) - 1)} inside
-            </span>
-          </header>
-          {group.children?.length ? (
-            <CodeRows categories={group.children} />
-          ) : (
-            <p class="px-2 py-1.5 text-sm text-muted-foreground">
-              No smaller genres listed. Open the group itself.
-            </p>
-          )}
-        </section>
-      ))
-    }
+    {groups.map((group) => (
+      <section id={group.id} data-group class="mb-8 break-inside-avoid-column">
+        <header class="mb-2 flex items-baseline justify-between gap-3 border-b border-border pb-2">
+          <h2 class="text-xl font-extrabold tracking-tight">
+            <a
+              href={netflixUrl(group.code)}
+              target="_blank"
+              rel="noopener noreferrer nofollow"
+              class="hover:text-accent"
+            >
+              {group.name}
+            </a>
+          </h2>
+          <span class="shrink-0 font-mono text-xs text-muted-foreground">
+            <button
+              type="button"
+              data-copy={group.code}
+              aria-describedby="copy-hint"
+            >
+              {group.code}
+            </button>
+            · {formatCount(countInGroup(group) - 1)} inside
+          </span>
+        </header>
+        {group.children?.length ? (
+          <CodeRows categories={group.children} />
+        ) : (
+          <p class="px-2 py-1.5 text-sm text-muted-foreground">
+            No smaller genres listed. Open the group itself.
+          </p>
+        )}
+      </section>
+    ))}
   </div>
-  <p id="no-results" class="mx-auto hidden max-w-6xl px-5 pb-16 text-muted-foreground">
+  <p
+    id="no-results"
+    class="mx-auto hidden max-w-6xl px-5 pb-16 text-muted-foreground"
+  >
     No genres match that filter. Try a shorter word or fewer digits.
   </p>
 </Base>
@@ -117,26 +133,37 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
   const status = document.querySelector<HTMLElement>("#filter-status");
   const empty = document.querySelector<HTMLElement>("#no-results");
   const groups = [...document.querySelectorAll<HTMLElement>("[data-group]")];
-  const rows = [...document.querySelectorAll<HTMLElement>("[data-row]")].reverse();
+  const rows = [
+    ...document.querySelectorAll<HTMLElement>("[data-row]"),
+  ].toReversed();
   const total = rows.length + groups.length;
   const searchText = new Map<HTMLElement, string>();
   for (const element of [...rows, ...groups]) {
     const label = element.querySelector("a")?.textContent ?? "";
-    const code = element.querySelector<HTMLElement>("[data-copy]")?.dataset.copy ?? "";
+    const code =
+      element.querySelector<HTMLElement>("[data-copy]")?.dataset.copy ?? "";
     searchText.set(element, `${label.trim().toLowerCase()} ${code}`);
   }
   const format = (value: number) => value.toLocaleString("en-US");
 
   const apply = () => {
-    const tokens = (input?.value ?? "").trim().toLowerCase().split(/\s+/).filter(Boolean);
+    const tokens = (input?.value ?? "")
+      .trim()
+      .toLowerCase()
+      .split(/\s+/)
+      .filter(Boolean);
     const matches = (element: HTMLElement) =>
       tokens.every((token) => searchText.get(element)?.includes(token));
     // A matching group or parent genre keeps everything inside it visible.
     const ancestorMatches = (element: HTMLElement) => {
-      let parent = element.parentElement?.closest<HTMLElement>("[data-row], [data-group]");
+      let parent = element.parentElement?.closest<HTMLElement>(
+        "[data-row], [data-group]",
+      );
       while (parent) {
         if (matches(parent)) return true;
-        parent = parent.parentElement?.closest<HTMLElement>("[data-row], [data-group]");
+        parent = parent.parentElement?.closest<HTMLElement>(
+          "[data-row], [data-group]",
+        );
       }
       return false;
     };
@@ -147,7 +174,11 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
     for (const row of rows) {
       const childVisible = row.querySelector(":scope > ul > li:not([hidden])");
       const self = matches(row);
-      row.hidden = !(self || childVisible || (tokens.length > 0 && ancestorMatches(row)));
+      row.hidden = !(
+        self ||
+        childVisible ||
+        (tokens.length > 0 && ancestorMatches(row))
+      );
       if (self) shown += 1;
     }
     for (const group of groups) {
@@ -175,7 +206,9 @@ const updated = new Date(`${updatedAt}T00:00:00Z`).toLocaleDateString("en-US", {
   });
 
   document.addEventListener("click", async (event) => {
-    const button = (event.target as HTMLElement).closest<HTMLButtonElement>("[data-copy]");
+    const button = (event.target as HTMLElement).closest<HTMLButtonElement>(
+      "[data-copy]",
+    );
     if (!button) return;
     const code = button.dataset.copy ?? "";
     try {

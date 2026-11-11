@@ -10,22 +10,29 @@ interface Props {
 // Rendered 3,000+ times, so styling lives in short classes in global.css.
 const { categories, nested = false } = Astro.props;
 ---
+
 <ul class:list={[nested && "code-nested"]}>
-  {
-    categories.map((category) => (
-      <li data-row>
-        <div class="code-row">
-          <a href={netflixUrl(category.code)} target="_blank" rel="noopener noreferrer nofollow">
-            {category.name}
-          </a>
-          <button type="button" data-copy={category.code} aria-describedby="copy-hint">
-            {category.code}
-          </button>
-        </div>
-        {category.children?.length ? (
-          <Astro.self categories={category.children} nested />
-        ) : null}
-      </li>
-    ))
-  }
+  {categories.map((category) => (
+    <li data-row>
+      <div class="code-row">
+        <a
+          href={netflixUrl(category.code)}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+        >
+          {category.name}
+        </a>
+        <button
+          type="button"
+          data-copy={category.code}
+          aria-describedby="copy-hint"
+        >
+          {category.code}
+        </button>
+      </div>
+      {category.children?.length ? (
+        <Astro.self categories={category.children} nested />
+      ) : null}
+    </li>
+  ))}
 </ul>

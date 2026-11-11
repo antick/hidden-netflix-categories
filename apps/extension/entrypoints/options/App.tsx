@@ -301,12 +301,9 @@ export function OptionsApp() {
       </section>
 
       {status ? (
-        <p
-          role="status"
-          className="mt-4 text-sm text-[var(--color-accent-soft)]"
-        >
+        <output className="mt-4 block text-sm text-[var(--color-accent-soft)]">
           {status}
-        </p>
+        </output>
       ) : null}
       {prefsApi.error ? (
         <p role="alert" className="mt-4 text-sm">

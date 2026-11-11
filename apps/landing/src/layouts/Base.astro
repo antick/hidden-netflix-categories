@@ -23,6 +23,7 @@ const favicon = await getImage({ src: icon, width: 64, format: "png" });
 const touchIcon = await getImage({ src: icon, width: 180, format: "png" });
 const social = await getImage({ src: socialCard, format: "png" });
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -50,7 +51,9 @@ const social = await getImage({ src: socialCard, format: "png" });
     <slot name="head" />
   </head>
   <body class="min-h-screen">
-    <a class="skip-link" href="#main">Skip to content</a>
+    <a class="skip-link" href="#main">
+      Skip to content
+    </a>
     <Header />
     <main id="main">
       <slot />

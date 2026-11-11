@@ -50,11 +50,12 @@ export function subscribeToPreferences(
   if (typeof browser === "undefined" || !browser.storage?.onChanged) {
     return () => undefined;
   }
-  const onChange: Parameters<typeof browser.storage.onChanged.addListener>[0] =
-    (changes, area) => {
-      if (area !== "local" || !changes[PREFERENCES_KEY]) return;
-      listener(sanitizePreferences(changes[PREFERENCES_KEY].newValue));
-    };
+  const onChange: Parameters<
+    typeof browser.storage.onChanged.addListener
+  >[0] = (changes, area) => {
+    if (area !== "local" || !changes[PREFERENCES_KEY]) return;
+    listener(sanitizePreferences(changes[PREFERENCES_KEY].newValue));
+  };
   browser.storage.onChanged.addListener(onChange);
   return () => browser.storage.onChanged.removeListener(onChange);
 }

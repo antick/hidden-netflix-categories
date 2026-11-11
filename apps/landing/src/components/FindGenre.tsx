@@ -30,7 +30,7 @@ function search(entries: SearchEntry[], raw: string): SearchEntry[] {
   return entries
     .map((entry) => ({ entry, score: rank(entry, query, tokens) }))
     .filter((item) => item.score >= 0)
-    .sort(
+    .toSorted(
       (a, b) =>
         a.score - b.score ||
         a.entry[0].length - b.entry[0].length ||
@@ -56,10 +56,12 @@ export default function FindGenre({ suggestions }: { suggestions: string[] }) {
       .then((data) => {
         setEntries(data.categories);
         setStatus("ready");
+        return undefined;
       })
       .catch(() => {
         loading.current = null;
         setStatus("error");
+        return undefined;
       });
     if (status !== "ready") setStatus("loading");
   };

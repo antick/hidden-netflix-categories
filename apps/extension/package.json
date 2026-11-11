@@ -1,8 +1,9 @@
 {
   "name": "netflix-categories-chrome",
-  "description": "Unofficial, open-source Chrome extension for browsing Netflix's hidden categories and secret genre codes.",
-  "private": true,
   "version": "1.0.0",
+  "private": true,
+  "description": "Unofficial, open-source Chrome extension for browsing Netflix's hidden categories and secret genre codes.",
+  "license": "GPL-3.0-only",
   "type": "module",
   "scripts": {
     "dev": "wxt",
@@ -29,6 +30,5 @@
     "tailwindcss": "4.3.3",
     "typescript": "7.0.2",
     "wxt": "0.21.4"
-  },
-  "license": "GPL-3.0-only"
+  }
 }

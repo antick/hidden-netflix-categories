@@ -5,6 +5,8 @@ import { createRoot } from "react-dom/client";
 import { CategoryBrowser } from "../components/CategoryBrowser";
 import { DEFAULT_PREFERENCES } from "../lib/preferences";
 
+const noop = () => {};
+
 test("category selection is saved before navigation can close the popup", async () => {
   const { window, document } = parseHTML(
     "<html><body><div id='root'></div></body></html>",
@@ -42,7 +44,6 @@ test("category selection is saved before navigation can close the popup", async 
   const saved = new Promise<void>((resolve) => {
     finishSave = resolve;
   });
-  const noop = () => {};
   try {
     await act(async () => {
       root.render(

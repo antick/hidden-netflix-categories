@@ -41,6 +41,10 @@
 }
 
 .nc-mega {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  width: auto;
   display: flex;
   flex-direction: column;
   max-height: min(72vh, 640px);

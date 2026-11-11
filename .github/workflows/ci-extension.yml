@@ -10,7 +10,8 @@ on:
       - "bun.lock"
       - "bunfig.toml"
       - "turbo.json"
-      - "biome.json"
+      - ".oxlintrc.json"
+      - ".oxfmtrc.json"
       - "LICENSE"
       - ".github/workflows/ci-extension.yml"
   pull_request:

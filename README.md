@@ -83,7 +83,7 @@ Open `chrome://extensions`, enable Developer mode, select **Load unpacked**, and
 
 ```bash
 bun run validate:data     # check the shared dataset
-bun run check             # Biome lint and format check across the repo
+bun run check             # oxlint and oxfmt check across the repo
 bun run typecheck         # both apps
 bun run test              # extension unit tests and website build checks
 bun run build:extension
@@ -92,7 +92,7 @@ bun run zip               # apps/extension/.output/netflix-categories-chrome-<ve
 bun run build:landing     # apps/landing/dist
 ```
 
-`bun run check:fix` applies safe Biome fixes; `bun run format` formats files. CI runs the extension and website checks as separate workflows, each only when its files change.
+`bun run check:fix` applies oxlint fixes and formats with oxfmt. CI runs the extension and website checks as separate workflows, each only when its files change.
 
 ## Releases
 

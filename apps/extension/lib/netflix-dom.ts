@@ -217,19 +217,15 @@ export function findNetflixNavigationAnchor(
     if (isHtmlElement(node) && isPlausibleNav(node)) return node;
   }
 
-  const headerLinks = [...doc.querySelectorAll(NAV_ITEM_SELECTOR)].filter(
-    (el) => isNavLabel(elementLabel(el)),
+  const firstLabeled = [...doc.querySelectorAll(NAV_ITEM_SELECTOR)].find((el) =>
+    isNavLabel(elementLabel(el)),
   );
-  const firstLabeled = headerLinks[0];
   if (isHtmlElement(firstLabeled)) {
     const cluster = findNavCluster(firstLabeled);
     if (isPlausibleNav(cluster)) return cluster;
   }
 
-  const hrefLinks = [...doc.querySelectorAll("a[href]")].filter(
-    isHeaderishHref,
-  );
-  const firstHref = hrefLinks[0];
+  const firstHref = [...doc.querySelectorAll("a[href]")].find(isHeaderishHref);
   if (isHtmlElement(firstHref)) {
     const cluster = findNavCluster(firstHref);
     if (isPlausibleNav(cluster)) return cluster;

@@ -4,36 +4,43 @@ import { site } from "../lib/site";
 import GenreBoard from "./GenreBoard.astro";
 import { buttonVariants } from "./ui/button";
 ---
+
 <section class="glow">
-  <div
-    class="mx-auto grid max-w-6xl items-center gap-12 px-5 pt-16 pb-20 md:grid-cols-[1.05fr_1fr] md:pt-24 md:pb-28"
-  >
+  <div class="mx-auto grid max-w-6xl items-center gap-12 px-5 pt-16 pb-20 md:grid-cols-[1.05fr_1fr] md:pt-24 md:pb-28">
     <div>
       <p class="font-mono text-xs font-bold tracking-[0.12em] text-primary">
         NOW SHOWING · {formatCount(totalCategories)} CATEGORIES
       </p>
-      <h1
-        class="mt-4 text-[2.6rem] leading-[1.02] font-extrabold tracking-[-0.03em] text-balance sm:text-6xl"
-      >
-        Every hidden genre is <span class="text-primary">just a number</span> away.
+      <h1 class="mt-4 text-[2.6rem] leading-[1.02] font-extrabold tracking-[-0.03em] text-balance sm:text-6xl">
+        Every hidden genre is <span class="text-primary">just a number</span>{" "}
+        away.
       </h1>
       <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
-        Netflix sorts its catalog into thousands of tiny genres you'll never
-        see on the home screen. This free Chrome extension lets you search them,
+        Netflix sorts its catalog into thousands of tiny genres you'll never see
+        on the home screen. This free Chrome extension lets you search them,
         save your favorites, and open any of them in one click.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-3">
         <a href={site.install} class={buttonVariants({ size: "lg" })}>
           Add to Chrome, it's free
         </a>
-        <a href="/codes" class={buttonVariants({ size: "lg", variant: "outline" })}>
+        <a
+          href="/codes"
+          class={buttonVariants({ size: "lg", variant: "outline" })}
+        >
           Browse all codes →
         </a>
       </div>
       <ul class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-sm text-muted-foreground">
-        <li><b class="font-semibold text-foreground">Storage-only</b> permission</li>
-        <li><b class="font-semibold text-foreground">No</b> tracking or accounts</li>
-        <li><b class="font-semibold text-foreground">GPLv3</b> open source</li>
+        <li>
+          <b class="font-semibold text-foreground">Storage-only</b> permission
+        </li>
+        <li>
+          <b class="font-semibold text-foreground">No</b> tracking or accounts
+        </li>
+        <li>
+          <b class="font-semibold text-foreground">GPLv3</b> open source
+        </li>
       </ul>
     </div>
     <GenreBoard />

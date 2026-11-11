@@ -29,7 +29,7 @@ export function MegaMenu({
   onClearRecent,
   onOpened,
 }: MegaMenuProps) {
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDialogElement>(null);
 
   useEffect(() => {
     if (!open) return;
@@ -58,11 +58,11 @@ export function MegaMenu({
   if (!open) return null;
 
   return (
-    <div
+    <dialog
+      open
       className="nc-mega"
       data-theme={prefs.theme}
       ref={panelRef}
-      role="dialog"
       aria-label="Hidden categories"
     >
       <div className="nc-body">
@@ -82,6 +82,6 @@ export function MegaMenu({
           }}
         />
       </div>
-    </div>
+    </dialog>
   );
 }

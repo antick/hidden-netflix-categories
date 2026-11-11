@@ -9,31 +9,41 @@ const links = [
   { label: "Report an issue", href: site.issues },
 ];
 ---
+
 <footer class="border-t border-border/60">
-  <div
-    class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 text-sm text-muted-foreground md:flex-row md:items-start md:justify-between"
-  >
+  <div class="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-10 text-sm text-muted-foreground md:flex-row md:items-start md:justify-between">
     <div class="max-w-md space-y-2">
       <p class="font-semibold text-foreground">{site.name}</p>
       <p>
-        An independent project. Not affiliated with, endorsed by, or sponsored by
-        Netflix, Inc. Netflix is a trademark of Netflix, Inc.
+        An independent project. Not affiliated with, endorsed by, or sponsored
+        by Netflix, Inc. Netflix is a trademark of Netflix, Inc.
       </p>
       <p>
-        Free and open source under <a class="underline underline-offset-4 hover:text-foreground" href={site.license}>GPLv3</a>.
-        A <a class="underline underline-offset-4 hover:text-foreground" href={site.potion}>potion.sh</a> experiment.
+        Free and open source under{" "}
+        <a
+          class="underline underline-offset-4 hover:text-foreground"
+          href={site.license}
+        >
+          GPLv3
+        </a>
+        . A{" "}
+        <a
+          class="underline underline-offset-4 hover:text-foreground"
+          href={site.potion}
+        >
+          potion.sh
+        </a>{" "}
+        experiment.
       </p>
     </div>
     <ul class="grid grid-cols-2 gap-x-8 gap-y-2 sm:flex sm:flex-wrap sm:gap-x-6">
-      {
-        links.map((link) => (
-          <li>
-            <a class="hover:text-foreground" href={link.href}>
-              {link.label}
-            </a>
-          </li>
-        ))
-      }
+      {links.map((link) => (
+        <li>
+          <a class="hover:text-foreground" href={link.href}>
+            {link.label}
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 </footer>

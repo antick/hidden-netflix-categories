@@ -31,9 +31,11 @@ export function usePreferences() {
     loadPreferences()
       .then((value) => {
         if (active) setPrefs(value);
+        return undefined;
       })
       .catch(() => {
         if (active) setError("Could not load saved preferences.");
+        return undefined;
       });
     const unsubscribe = subscribeToPreferences((value) => setPrefs(value));
     return () => {

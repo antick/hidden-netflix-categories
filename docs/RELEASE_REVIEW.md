@@ -10,14 +10,14 @@ The injected header menu and automatic empty-page detection remain in source, as
 
 ## Findings and remaining work
 
-| Priority | Finding and impact | Resolution |
-| --- | --- | --- |
-| Source-review note | The data consists of public category names and codes. The bulk table was imported from The Streamable, itself referencing What's On Netflix. No protected selection/arrangement or applicable restriction has been established by this review. | Keep the source record and distinguish public facts from any protected compilation or other material. Absence of an explicit license alone does not establish that permission is required. See `CATEGORY_DATA.md` for the narrower uncertainty. |
-| Release risk addressed | Netflix's terms restrict inserting code into/manipulating its service, automated access, and extraction. The original optional injection and page observation raised a direct concern. | `lib/release.ts`, `wxt.config.ts`, preference migration, permission guards, and CI prevent this release from including or enabling that integration. Re-enabling it requires a fresh terms, security, and privacy review. |
-| Informational | On recheck, all five current-branch commits use a personal Gmail author address. Three additional commits reachable through other local refs use a T3 Code noreply identity. Email is ordinary Git author metadata and is not bundled in the extension. | No change is needed if this is intentional. GitHub also supports account attribution through its account-specific noreply address. No history was rewritten. |
-| Submission requirement | The public policy URL and exact release source must be accessible before distribution. | Publish `PRIVACY.md` and a tag/archive containing source and lockfile matching the binary. Verify the links signed out. The current review did not publish them. |
-| Store images prepared | Historical screenshots show obsolete integration features and have the wrong store dimensions. | Current screenshots and the required small promotional tile are now available in `docs/store-assets/`; use its README upload mapping. |
-| Repository setup | Public repository settings and store account settings are outside this local review. | Enable private vulnerability reporting, dependency alerts, and available secret scanning. Complete Google's publisher verification and two-step verification. |
+| Priority               | Finding and impact                                                                                                                                                                                                                                      | Resolution                                                                                                                                                                                                                                      |
+| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Source-review note     | The data consists of public category names and codes. The bulk table was imported from The Streamable, itself referencing What's On Netflix. No protected selection/arrangement or applicable restriction has been established by this review.          | Keep the source record and distinguish public facts from any protected compilation or other material. Absence of an explicit license alone does not establish that permission is required. See `CATEGORY_DATA.md` for the narrower uncertainty. |
+| Release risk addressed | Netflix's terms restrict inserting code into/manipulating its service, automated access, and extraction. The original optional injection and page observation raised a direct concern.                                                                  | `lib/release.ts`, `wxt.config.ts`, preference migration, permission guards, and CI prevent this release from including or enabling that integration. Re-enabling it requires a fresh terms, security, and privacy review.                       |
+| Informational          | On recheck, all five current-branch commits use a personal Gmail author address. Three additional commits reachable through other local refs use a T3 Code noreply identity. Email is ordinary Git author metadata and is not bundled in the extension. | No change is needed if this is intentional. GitHub also supports account attribution through its account-specific noreply address. No history was rewritten.                                                                                    |
+| Submission requirement | The public policy URL and exact release source must be accessible before distribution.                                                                                                                                                                  | Publish `PRIVACY.md` and a tag/archive containing source and lockfile matching the binary. Verify the links signed out. The current review did not publish them.                                                                                |
+| Store images prepared  | Historical screenshots show obsolete integration features and have the wrong store dimensions.                                                                                                                                                          | Current screenshots and the required small promotional tile are now available in `docs/store-assets/`; use its README upload mapping.                                                                                                           |
+| Repository setup       | Public repository settings and store account settings are outside this local review.                                                                                                                                                                    | Enable private vulnerability reporting, dependency alerts, and available secret scanning. Complete Google's publisher verification and two-step verification.                                                                                   |
 
 Source for the terms assessment: [Netflix Terms of Use](https://help.netflix.com/legal/termsofuse). Netflix also [documents public genre links](https://www.netflix.com/tudum/articles/netflix-secret-codes-guide); that does not grant redistribution rights to someone else's compilation. The review did not find payment/DRM/region bypass, private API use, account credential access, or runtime scraping in the shipped build.
 
@@ -47,19 +47,19 @@ These checks cover reachable **local** history and available files, not unreacha
 
 Registry metadata was checked on 2026-09-22. Every selected direct dependency is an exact version and was published at least two days before the review. **No latest stable version was skipped for being less than two days old.** Transitive versions are recorded in `bun.lock`; they are not independently forced to incompatible majors.
 
-| Package | Selected version | Published (UTC date) |
-| --- | --- | --- |
-| `@fontsource-variable/figtree` | 5.3.0 | 2026-07-19 |
-| `lucide-react` | 1.47.0 | 2026-09-17 |
-| `react`, `react-dom` | 19.3.0 | 2026-09-09 |
-| `@biomejs/biome` | 2.5.14 | 2026-09-16 |
-| `@tailwindcss/vite`, `tailwindcss` | 4.3.3 | 2026-07-16 |
-| `@types/react`, `@types/react-dom` | 19.3.0 | 2026-09-09 |
-| `@wxt-dev/module-react` | 1.2.2 | 2026-03-14 |
-| `linkedom` | 0.18.13 | 2026-07-07 |
-| `typescript` | 7.0.2 | 2026-07-08 |
-| `wxt` | 0.21.4 | 2026-08-11 |
-| Bun (package manager and CI) | 1.4.2 | 2026-09-05 |
+| Package                            | Selected version | Published (UTC date) |
+| ---------------------------------- | ---------------- | -------------------- |
+| `@fontsource-variable/figtree`     | 5.3.0            | 2026-07-19           |
+| `lucide-react`                     | 1.47.0           | 2026-09-17           |
+| `react`, `react-dom`               | 19.3.0           | 2026-09-09           |
+| `@biomejs/biome`                   | 2.5.14           | 2026-09-16           |
+| `@tailwindcss/vite`, `tailwindcss` | 4.3.3            | 2026-07-16           |
+| `@types/react`, `@types/react-dom` | 19.3.0           | 2026-09-09           |
+| `@wxt-dev/module-react`            | 1.2.2            | 2026-03-14           |
+| `linkedom`                         | 0.18.13          | 2026-07-07           |
+| `typescript`                       | 7.0.2            | 2026-07-08           |
+| `wxt`                              | 0.21.4           | 2026-08-11           |
+| Bun (package manager and CI)       | 1.4.2            | 2026-09-05           |
 
 CI pins `actions/checkout` v7.0.1 (published 2026-07-20) and `oven-sh/setup-bun` v2.2.0 (published 2026-03-14) by full SHA. `bun audit --json` returned no reported advisories. That is a known-advisory check, not proof that every dependency is vulnerability-free.
 

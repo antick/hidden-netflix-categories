@@ -2,15 +2,26 @@
 import { buttonVariants } from "../components/ui/button";
 import Base from "../layouts/Base.astro";
 ---
+
 <Base title="Page not found · Categories for Netflix" path="/404">
   <meta slot="head" name="robots" content="noindex" />
   <section class="mx-auto max-w-2xl px-5 py-28 text-center">
-    <p class="font-mono text-sm font-bold tracking-[0.12em] text-primary">ERROR 404</p>
-    <h1 class="mt-4 text-4xl font-extrabold tracking-tight">This channel has no signal.</h1>
-    <p class="mt-4 text-muted-foreground">The page you were looking for isn't here.</p>
+    <p class="font-mono text-sm font-bold tracking-[0.12em] text-primary">
+      ERROR 404
+    </p>
+    <h1 class="mt-4 text-4xl font-extrabold tracking-tight">
+      This channel has no signal.
+    </h1>
+    <p class="mt-4 text-muted-foreground">
+      The page you were looking for isn't here.
+    </p>
     <div class="mt-8 flex justify-center gap-3">
-      <a href="/" class={buttonVariants()}>Go home</a>
-      <a href="/codes" class={buttonVariants({ variant: "outline" })}>Browse codes</a>
+      <a href="/" class={buttonVariants()}>
+        Go home
+      </a>
+      <a href="/codes" class={buttonVariants({ variant: "outline" })}>
+        Browse codes
+      </a>
     </div>
   </section>
 </Base>

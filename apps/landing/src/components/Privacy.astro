@@ -16,29 +16,44 @@ const points = [
   },
 ];
 ---
+
 <section id="privacy" class="border-t border-border/60">
   <div class="mx-auto grid max-w-6xl gap-10 px-5 py-20 md:grid-cols-[1fr_1.4fr]">
     <div>
-      <p class="font-mono text-xs font-bold tracking-[0.12em] text-primary">PRIVACY</p>
+      <p class="font-mono text-xs font-bold tracking-[0.12em] text-primary">
+        PRIVACY
+      </p>
       <h2 class="mt-3 text-3xl font-extrabold tracking-tight text-balance sm:text-4xl">
         It doesn't watch what you watch.
       </h2>
       <p class="mt-4 text-muted-foreground">
         The extension never reads Netflix pages, cookies, your account, or your
         viewing history.{" "}
-        <a href="/privacy" class="text-primary underline-offset-4 hover:underline">Read the privacy policy</a>{" "}
-        or <a href={site.repository} class="text-primary underline-offset-4 hover:underline">inspect the source</a>.
+        <a
+          href="/privacy"
+          class="text-primary underline-offset-4 hover:underline"
+        >
+          Read the privacy policy
+        </a>{" "}
+        or{" "}
+        <a
+          href={site.repository}
+          class="text-primary underline-offset-4 hover:underline"
+        >
+          inspect the source
+        </a>
+        .
       </p>
     </div>
     <ul class="grid gap-4">
-      {
-        points.map((point) => (
-          <li class="rounded-xl border border-border bg-card p-5">
-            <h3 class="font-bold">{point.title}</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-muted-foreground">{point.body}</p>
-          </li>
-        ))
-      }
+      {points.map((point) => (
+        <li class="rounded-xl border border-border bg-card p-5">
+          <h3 class="font-bold">{point.title}</h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+            {point.body}
+          </p>
+        </li>
+      ))}
     </ul>
   </div>
 </section>

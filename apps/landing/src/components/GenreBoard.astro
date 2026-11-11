@@ -4,6 +4,7 @@ import { boardRows, netflixUrl } from "../lib/categories";
 const rows = boardRows();
 const visible = rows.slice(0, 6);
 ---
+
 <figure
   class="rounded-xl border border-border bg-board p-3 shadow-2xl shadow-black/40"
   aria-label="Examples of Netflix genres and their codes"
@@ -12,44 +13,51 @@ const visible = rows.slice(0, 6);
     class="flex justify-between px-1.5 pb-2.5 font-mono text-[10px] font-bold tracking-[0.12em] text-muted-foreground"
     aria-hidden="true"
   >
-    <span>GENRE</span><span>CODE</span>
+    <span>GENRE</span>
+    <span>CODE</span>
   </div>
   <ul data-board data-rows={JSON.stringify(rows)}>
-    {
-      visible.map((row, index) => (
-        <li
-          class:list={[
-            "flex items-center justify-between gap-3 rounded-md border-t border-tile px-1.5 py-2 text-[13px]",
-            index === 1 && "bg-primary/10",
-          ]}
+    {visible.map((row, index) => (
+      <li
+        class:list={[
+          "flex items-center justify-between gap-3 rounded-md border-t border-tile px-1.5 py-2 text-[13px]",
+          index === 1 && "bg-primary/10",
+        ]}
+      >
+        <a
+          data-name
+          href={netflixUrl(row.code)}
+          class="min-w-0 truncate font-semibold hover:text-accent"
+          rel="noopener noreferrer"
         >
-          <a
-            data-name
-            href={netflixUrl(row.code)}
-            class="min-w-0 truncate font-semibold hover:text-accent"
-            rel="noopener noreferrer"
-          >
-            {row.name}
-          </a>
-          <span
-            data-code
-            class="flex shrink-0 gap-0.5 font-mono text-xs font-bold"
-            aria-label={`Code ${row.code}`}
-          >
-            {[...row.code].map((digit) => (
-              <span class="flip-tile" aria-hidden="true">
-                {digit}
-              </span>
-            ))}
-          </span>
-        </li>
-      ))
-    }
+          {row.name}
+        </a>
+        <span
+          data-code
+          class="flex shrink-0 gap-0.5 font-mono text-xs font-bold"
+          aria-label={`Code ${row.code}`}
+        >
+          {[...row.code].map((digit) => (
+            <span class="flip-tile" aria-hidden="true">
+              {digit}
+            </span>
+          ))}
+        </span>
+      </li>
+    ))}
   </ul>
 </figure>
 
 <script>
   type Row = { name: string; code: string };
+
+  const tile = (digit: string) => {
+    const span = document.createElement("span");
+    span.className = "flip-tile is-flipping";
+    span.setAttribute("aria-hidden", "true");
+    span.textContent = digit;
+    return span;
+  };
 
   const board = document.querySelector<HTMLUListElement>("[data-board]");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -57,18 +65,14 @@ const visible = rows.slice(0, 6);
   if (board && !reduceMotion.matches) {
     const rows: Row[] = JSON.parse(board.dataset.rows ?? "[]");
     const items = [...board.querySelectorAll("li")];
-    const shown = new Set(items.map((item) => item.querySelector("[data-name]")?.textContent?.trim()));
+    const shown = new Set(
+      items.map((item) =>
+        item.querySelector("[data-name]")?.textContent?.trim(),
+      ),
+    );
     // Spread updates across the board instead of rippling top to bottom.
     const order = [0, 3, 1, 4, 2, 5];
     let step = 0;
-
-    const tile = (digit: string) => {
-      const span = document.createElement("span");
-      span.className = "flip-tile is-flipping";
-      span.setAttribute("aria-hidden", "true");
-      span.textContent = digit;
-      return span;
-    };
 
     setInterval(() => {
       if (document.hidden) return;
