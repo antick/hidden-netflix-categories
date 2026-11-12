@@ -1,3 +1,5 @@
+export const EXTENSION_NAME = "Hidden Categories for Netflix (Unofficial)";
+
 // Keep page injection out of release packages until Netflix's terms are resolved.
 // Changing this requires a fresh permissions, privacy, and store-policy review.
 export const PAGE_INTEGRATION_ENABLED = false;
