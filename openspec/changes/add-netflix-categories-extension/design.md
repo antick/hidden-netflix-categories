@@ -1,6 +1,6 @@
 ## Context
 
-The repository is an empty MIT-licensed Chrome extension repo (`antick/netflix-categories-chrome`). There is no existing application code. The product is an unofficial extension that makes Netflix hidden category/genre codes discoverable through a popup and an optional in-page header menu. Category data must be researched from public sources and bundled; nothing is fetched at runtime.
+The repository is an empty MIT-licensed Chrome extension repo (`antick/hidden-netflix-categories`). There is no existing application code. The product is an unofficial extension that makes Netflix hidden category/genre codes discoverable through a popup and an optional in-page header menu. Category data must be researched from public sources and bundled; nothing is fetched at runtime.
 
 Constraints: Bun-only tooling, WXT + React + TypeScript + Tailwind + Biome, Manifest V3, minimal permissions, no analytics/telemetry/backends, no Netflix private APIs, no official Netflix branding.
 

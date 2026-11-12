@@ -1,7 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "wxt";
 import { NETFLIX_HOST_PERMISSION } from "./lib/permissions";
-import { PAGE_INTEGRATION_ENABLED } from "./lib/release";
+import { EXTENSION_NAME, PAGE_INTEGRATION_ENABLED } from "./lib/release";
 
 export default defineConfig({
   modules: ["@wxt-dev/module-react"],
@@ -12,7 +12,7 @@ export default defineConfig({
     plugins: [tailwindcss()],
   }),
   manifest: {
-    name: "Categories for Netflix (Unofficial)",
+    name: EXTENSION_NAME,
     description:
       "Unofficial, open-source Chrome extension for browsing Netflix's hidden categories and secret genre codes.",
     permissions: ["storage"],

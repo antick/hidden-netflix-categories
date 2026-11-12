@@ -35,7 +35,7 @@ See also the [search screenshot](docs/store-assets/02-search.png) and [favorites
 
 ## Website
 
-[netflix-categories.potion.sh](https://netflix-categories.potion.sh) is the landing page, with a searchable list of every genre code. It is built from the same dataset as the extension and lives in `apps/landing`.
+The retained landing page in `apps/landing` has a searchable list of every genre code. It is built from the same dataset as the extension and can be built and previewed locally.
 
 ## Repository layout
 
@@ -43,7 +43,7 @@ This is a Bun workspace monorepo, orchestrated with Turborepo.
 
 ```text
 apps/extension/     # the Chrome extension (WXT + React), the code that ships to the store
-apps/landing/       # the website (Astro + Tailwind + shadcn/ui), deployed to Vercel
+apps/landing/       # the website (Astro + Tailwind + shadcn/ui), retained for local use
 packages/categories # the bundled genre dataset, shared by both apps
 docs/               # store submission, data provenance, and release notes
 ```
@@ -73,8 +73,8 @@ With [mise](https://mise.jdx.dev/) installed, run `mise install` once, then use 
 | `preview` | `mise run preview` |
 
 ```bash
-git clone https://github.com/antick/netflix-categories-chrome.git
-cd netflix-categories-chrome
+git clone https://github.com/antick/hidden-netflix-categories.git
+cd hidden-netflix-categories
 bun install --frozen-lockfile
 bun run build:extension
 ```
@@ -96,10 +96,9 @@ bun run build:landing     # apps/landing/dist
 
 ## Releases
 
-A release is a GitHub Release tagged `v<version>` at a commit on `main`, matching `apps/extension/package.json`'s version. Publishing it does two things:
+A release is a GitHub Release tagged `v<version>` at a commit on `main`, matching `apps/extension/package.json`'s version. It provides the corresponding GPLv3 source for the store ZIP of that version, which is still built and uploaded by hand. See the [store submission guide](docs/CHROME_WEB_STORE_SUBMISSION.md).
 
-- It is the corresponding GPLv3 source for the store ZIP of that version, which is still built and uploaded by hand. See the [store submission guide](docs/CHROME_WEB_STORE_SUBMISSION.md).
-- It deploys the website to production through `.github/workflows/vercel-production.yml`. Merges to `main` alone never deploy. Run that workflow by hand to redeploy the latest release.
+The landing page is retained for local use; releases do not deploy it.
 
 ## Retained experimental integration
 
