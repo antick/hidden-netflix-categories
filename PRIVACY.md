@@ -2,7 +2,7 @@
 
 Effective date: 2026-09-22
 
-This policy covers **Categories for Netflix (Unofficial)**, maintained by Pankaj ([project and support](https://github.com/antick/netflix-categories-chrome)). It is independent of Netflix.
+This policy covers **Categories for Netflix (Unofficial)**, maintained by Pankaj ([project and support](https://github.com/antick/hidden-netflix-categories)). It is independent of Netflix.
 
 ## Information used
 
@@ -26,4 +26,4 @@ Saved settings remain until you clear or reset them in Options, remove the exten
 
 ## Changes and contact
 
-Changes to data handling will be reflected here and disclosed in the extension and store listing when required. For questions, use the [project issue tracker](https://github.com/antick/netflix-categories-chrome/issues). Do not post private exports, credentials, or account screenshots. For vulnerabilities, follow [SECURITY.md](https://github.com/antick/netflix-categories-chrome/blob/main/SECURITY.md).
+Changes to data handling will be reflected here and disclosed in the extension and store listing when required. For questions, use the [project issue tracker](https://github.com/antick/hidden-netflix-categories/issues). Do not post private exports, credentials, or account screenshots. For vulnerabilities, follow [SECURITY.md](https://github.com/antick/hidden-netflix-categories/blob/main/SECURITY.md).

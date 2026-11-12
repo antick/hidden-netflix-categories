@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
+import { site } from "../src/lib/site.ts";
 
 // These checks run against the static build in dist/, after `astro build`.
 const read = (file) => readFileSync(join("dist", file), "utf8");
@@ -16,16 +17,14 @@ const countAll = (categories) =>
 const total = countAll(dataset.categories);
 const store =
   "https://chromewebstore.google.com/detail/categories-for-netflix-un/dhmkkdcngbedlfggdpdnoahebcdnmdlj";
+const origin = site.url;
 const pages = ["index.html", "codes.html", "privacy.html", "404.html"];
 
 test("every page has one h1, a canonical URL, and working local links", () => {
   for (const page of pages) {
     const html = read(page);
     assert.equal((html.match(/<h1\b/g) ?? []).length, 1, page);
-    assert.match(
-      html,
-      /<link rel="canonical" href="https:\/\/netflix-categories\.potion\.sh[^"]*"/,
-    );
+    assert.ok(html.includes(`<link rel="canonical" href="${origin}`));
     assert.match(html, /Not affiliated with, endorsed by, or sponsored by/);
     for (const [, asset] of html.matchAll(
       /(?:src|href)="(\/_astro\/[^"?#]+)"/g,
@@ -48,9 +47,10 @@ test("the landing page sells the extension honestly", () => {
   assert.ok(html.includes(`href="${store}"`));
   assert.match(html, /Storage-only/);
   assert.equal((html.match(/<details\b/g) ?? []).length, 5);
-  assert.match(
-    html,
-    /<meta property="og:image" content="https:\/\/netflix-categories\.potion\.sh\/_astro\/social-card/,
+  assert.ok(
+    html.includes(
+      `<meta property="og:image" content="${origin}/_astro/social-card`,
+    ),
   );
   assert.match(html, new RegExp(`${total.toLocaleString("en-US")} CATEGORIES`));
   for (const name of [
@@ -94,17 +94,10 @@ test("the privacy page mirrors the repository policy", () => {
 });
 
 test("search engines get a sitemap, and the 404 page stays out of it", () => {
-  assert.match(
-    read("robots.txt"),
-    /Sitemap: https:\/\/netflix-categories\.potion\.sh\/sitemap\.xml/,
-  );
+  assert.ok(read("robots.txt").includes(`Sitemap: ${origin}/sitemap.xml`));
   const sitemap = read("sitemap.xml");
   for (const path of ["", "/codes", "/privacy"]) {
-    assert.ok(
-      sitemap.includes(
-        `<loc>https://netflix-categories.potion.sh${path}</loc>`,
-      ),
-    );
+    assert.ok(sitemap.includes(`<loc>${origin}${path}</loc>`));
   }
   assert.doesNotMatch(sitemap, /404/);
   assert.match(read("404.html"), /<meta name="robots" content="noindex"/);

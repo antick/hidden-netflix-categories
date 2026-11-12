@@ -64,7 +64,7 @@ Source: [Google's image requirements](https://developer.chrome.com/docs/webstore
 2. Upload `apps/extension/.output/netflix-categories-chrome-1.0.0-chrome.zip`.
 3. Check the Package tab's version and permissions. Stop if it shows site access or a content/background script.
 4. Fill the Store listing tab with accurate English copy, the closest available category, and current images. Use an entertainment-related category if offered; the dashboard's choices can change.
-5. Set the homepage to `https://netflix-categories.potion.sh` once the website is live (until then, `https://github.com/antick/netflix-categories-chrome`) and support to the repository's `/issues` page. The privacy policy URL may also point at `https://netflix-categories.potion.sh/privacy`, which renders `PRIVACY.md`. Listing fields change without a new package upload.
+5. Set the homepage to `https://github.com/antick/hidden-netflix-categories` and support to `https://github.com/antick/hidden-netflix-categories/issues`. Set the privacy policy URL to `https://github.com/antick/hidden-netflix-categories/blob/main/PRIVACY.md`. Listing fields can be submitted without a new package upload. Remove any retired website links from descriptions and the Official URL field as well.
 
 Source: [publish an extension](https://developer.chrome.com/docs/webstore/publish).
 
@@ -84,7 +84,7 @@ Select **No, I am not using remote code**. Runtime code, fonts, and category dat
 
 **Privacy policy URL**
 
-Publish `PRIVACY.md`, then use `https://github.com/antick/netflix-categories-chrome/blob/main/PRIVACY.md` or a public hosted copy. Open the URL while signed out and verify it works. A private-repository URL is not an acceptable public policy link.
+Publish `PRIVACY.md`, then use `https://github.com/antick/hidden-netflix-categories/blob/main/PRIVACY.md` or a public hosted copy. Open the URL while signed out and verify it works. A private-repository URL is not an acceptable public policy link.
 
 **Data-use disclosures**
 
@@ -137,4 +137,4 @@ Source: [submission and deferred publishing](https://developer.chrome.com/docs/w
 
 Increase `apps/extension/package.json`'s version, update the lockfile/notices as needed, repeat tests and package checks, publish matching GPLv3 source, and upload the new ZIP to the same item. Keep data disclosures and screenshots aligned with the shipped features. Treat enabling page integration as a new legal/privacy/permissions decision, not a routine toggle.
 
-Publishing the GitHub Release for the new tag also deploys the website (`.github/workflows/vercel-production.yml`). The website and the extension share one tag sequence: a website-only change still ships with the next tagged release, or can be redeployed from the latest release by running that workflow by hand.
+The landing page source and checks are retained for local use. GitHub Releases no longer deploy a website.

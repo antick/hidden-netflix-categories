@@ -1,6 +1,6 @@
 # Website
 
-The landing site for [netflix-categories.potion.sh](https://netflix-categories.potion.sh): Astro, Tailwind CSS 4, and shadcn/ui components, rendered as static pages.
+The retained landing page: Astro, Tailwind CSS 4, and shadcn/ui components, rendered as static pages.
 
 ```bash
 bun run dev:landing    # from the repository root, http://127.0.0.1:4321
@@ -23,4 +23,6 @@ bun run test --filter=@netflix-categories/landing  # builds, then checks dist/
 
 ## Deploys
 
-Production deploys only when a GitHub Release is published (`.github/workflows/vercel-production.yml`), using the settings in the root `vercel.json`. The Vercel project needs the `netflix-categories.potion.sh` domain and the `VERCEL_TOKEN`, `VERCEL_ORG_ID`, and `VERCEL_PROJECT_ID` repository secrets.
+There is no production deployment. The source, local preview commands, and CI checks are retained.
+
+`SITE_URL` sets the origin used in canonical links, social metadata, robots.txt, and the sitemap. It defaults to `http://127.0.0.1:4321` for local previews. If hosting is restored, set `SITE_URL` to the new public origin when building and testing.

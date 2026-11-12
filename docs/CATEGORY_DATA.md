@@ -1,6 +1,6 @@
 # Category data
 
-The extension ships a static dataset at `packages/categories/netflix-categories.json`. Category lists are **never fetched at runtime**. The website at netflix-categories.potion.sh renders its codes page from the same file at build time.
+The extension ships a static dataset at `packages/categories/netflix-categories.json`. Category lists are **never fetched at runtime**. The retained landing page in `apps/landing` renders its codes page from the same file at build time.
 
 ## What the data contains and the source question
 

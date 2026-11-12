@@ -7,7 +7,7 @@ under the terms of the GNU General Public License version 3.
 It is distributed without any warranty; see LICENSE.txt.
 
 Corresponding source and build instructions:
-https://github.com/antick/netflix-categories-chrome
+https://github.com/antick/hidden-netflix-categories
 See the release matching the version in manifest.json.
 Maintainers must publish that exact source and lockfile with each release.
 

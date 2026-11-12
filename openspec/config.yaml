@@ -2,7 +2,7 @@ schema: spec-driven
 
 context: |
   Product: Netflix Categories: unofficial open-source Chrome extension
-  Repository: antick/netflix-categories-chrome
+  Repository: antick/hidden-netflix-categories
   License: MIT (keep existing LICENSE copyright 2026 Pankaj)
 
   Stack: Bun, WXT, Chrome Manifest V3, React, TypeScript, Tailwind CSS, Biome, Lucide React

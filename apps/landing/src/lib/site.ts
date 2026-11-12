@@ -1,16 +1,18 @@
+import { siteOrigin } from "./site-origin.mjs";
+
 export const site = {
   name: "Categories for Netflix (Unofficial)",
   shortName: "Categories for Netflix",
-  url: "https://netflix-categories.potion.sh",
+  url: siteOrigin,
   title: "Categories for Netflix: every hidden genre code, one click away",
   description:
     "A free, open-source Chrome extension for searching Netflix's hidden categories and secret genre codes. Save favorites, hide what you don't watch, and open any genre in one click.",
   install:
     "https://chromewebstore.google.com/detail/categories-for-netflix-un/dhmkkdcngbedlfggdpdnoahebcdnmdlj",
-  repository: "https://github.com/antick/netflix-categories-chrome",
-  issues: "https://github.com/antick/netflix-categories-chrome/issues",
+  repository: "https://github.com/antick/hidden-netflix-categories",
+  issues: "https://github.com/antick/hidden-netflix-categories/issues",
   license:
-    "https://github.com/antick/netflix-categories-chrome/blob/main/LICENSE",
+    "https://github.com/antick/hidden-netflix-categories/blob/main/LICENSE",
   potion: "https://potion.sh",
 };
 

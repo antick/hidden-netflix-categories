@@ -13,7 +13,6 @@ on:
       - "bunfig.toml"
       - "turbo.json"
       - "biome.json"
-      - "vercel.json"
       - ".github/workflows/ci-landing.yml"
   pull_request:
     paths: *landing-paths
